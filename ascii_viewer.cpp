@@ -45,12 +45,34 @@ void setPixel(Window& screen, char c, int x, int y) {
     screen.buffer[y][x] = c;
 }
 
-void drawShape(Window& screen, const Shape& sh, int x, int y) {
-    for (int line = 0; line < sh.HEIGHT; line++) 
-        for (int pixel = 0; pixel < sh.WIDTH; pixel++)
-            setPixel(screen, sh.image[y+line][x+pixel], (x+pixel), (y+line));
-}
-
-void initCircle(Shape& sh) {
-}
+//void drawShape(Window& screen, const Shape& sh, int x, int y) {
+//    for (int line = 0; line < sh.size; line++)
+//        for (int c = 0; c < sh.size; c++)
+//            setPixel(screen, sh.image[line*sh.size+c], (x+c), (y+line));
+//    
+//    
+//    //for (int line = 0; line < sh.HEIGHT; line++) 
+//    //    for (int pixel = 0; pixel < sh.WIDTH; pixel++)
+//    //        setPixel(screen, sh.image[y+line][x+pixel], (x+pixel), (y+line));
+//}
+//
+//void initShape(Shape& sh, Shape_Types type, int size) {
+//    sh.image = new char[size*size];
+//    sh.size = size;
+//    sh.type = type;
+//
+//    switch (type) {
+//        case Circle:
+//        case Square:
+//        default:
+//            for (int i = 0; i < size; i++) 
+//                sh.image[size] = 'N';
+//            break;
+//    }
+//}
+//
+//void destroyShape(Shape& sh) {
+//    sh.size = 0;
+//    delete[] sh.image;
+//}
 
