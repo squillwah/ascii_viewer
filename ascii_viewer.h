@@ -1,18 +1,40 @@
-#ifndef ASCII_VIEWER_H
-#define ASCII_VIEWER_H
+#ifndef ASCII_VIEWER
+#define ASCII_VIEWER
 
-struct Window {
-    static const int WIDTH = 40;
-    static const int HEIGHT = 40;
-    char buffer[HEIGHT][WIDTH];
+enum Shape {
+    Rect,
+    Circle,
+    Triangle
 };
 
-void clearBuffer(Window&);
-void renderBuffer(const Window&);
+namespace img {
+    struct Image {
+        int size_x = 0;
+        int size_y = 0;
+        char* buffer;
+    
+        Image(int sx, int sy);
+        ~Image();
+    };
+    
+    void wipeBuffer(Image& image);
+    void drawShape(Image& image, Shape shape);
+    void drawLine(Image& image, int from_x, int from_y, int to_x, int to_y);
+    void impose(Image& image, const Image& overlay, int at_x, int at_y);
+}
 
-void setPixel(Window&, char, int, int);
+class Screen {
+  public:
+    bool fl_boarder;
 
-//void initShape(Shape&, Shape_Types, int);
-//void destroyShape(Shape&);
+    Screen(int width, int height);
+    
+    void wipe();
+    void render();
+    void blit(img::Image& image, int at_x, int at_y);
+
+  private:
+    img::Image screenImage;
+};
 
 #endif

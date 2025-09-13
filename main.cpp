@@ -1,17 +1,16 @@
-#include <iostream>
-#include "ascii_process.h"
+#include "ascii_viewer.h"
 
 int main() {
-    Window scr;
+    Screen window(40, 40);
+
+    img::Image square(4, 4);
+    drawShape(square, Rect);
+
+    window.render();
+
+    window.blit(square, 5, 8);
     
-    switch (ascii_process::run(scr, 30)) {
-        case 0:
-            std::cout << "quit" << std::endl;
-            break;
-        default:
-            break;
-    }
-  
+    window.render();
+
     return 0;
 }
-
