@@ -16,9 +16,48 @@ int main() {
     printf("%s\n\n\n", test);
 
     Screen s;
-    initScreen(&s, 5, 5);
+    initialize_Screen(&s, 50, 50);
 
-    printf("%s\n", s.surface);
+    printf("%s\n\n", s.surface);
+    //scr_wipe(&s);
+    //printf("%s\n\n", s.surface);
+
+    //scr_setPixel(&s, 1, 2, 'X');
+    //printf("%s\n\n", s.surface);
+
+    //for (int i = 0; i < s.blockSize; i++)
+    //    printf("%c", s.surface[i]);
+
+    //for (int y = 0; y < s.pixelsY; y++)
+    //    for (int x = 0; x < s.pixelsX; x++) {
+    //        scr_setPixel(&s, x, y, 'X');
+    //        printf("%s\n\n", s.surface);
+    //    }
+    
+    Image i;
+    initialize_Image(&i, 10, 10);
+
+    image_draw_shape(&i, Rect);
+    
+    Image j;
+    initialize_Image(&j, 5, 3);
+
+    
+    screen_blit_image(&s, &i, 3, 3);
+
+    printf("%s\n\n", s.surface);
+
+    
+    image_impose_image(&i, &j, 2, 2);
+    
+    screen_blit_image(&s, &i, 3, 3);
+
+    printf("%s\n\n", s.surface);
+
+    destroy_Image(&i);
+    destroy_Image(&j);
+    destroy_Screen(&s);
+
     return 0;
 }
 
